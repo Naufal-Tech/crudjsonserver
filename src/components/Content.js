@@ -4,35 +4,35 @@ import { FaTrashAlt } from 'react-icons/fa';
 
 export default function Content() {
 
-    const [items, setItems] = useState([
+    const [todos, setTodos] = useState([
 
     {
         id: 1,
         checked: false,
-        item: "Belajar ReactJs"
+        todo: "Belajar ReactJs"
     },
     {
         id: 2,
         checked: false,
-        item: "Belajar Rest-API"
+        todo: "Belajar Rest-API"
     },
     {
         id: 3,
         checked: false,
-        item: "Belajar MVC"
+        todo: "Belajar MVC"
     }
 ]);
 
 const handleCheck = (id) => {
-    const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
-    setItems(listItems);
-    localStorage.setItem('shoppinglist', JSON.stringify(listItems));
+    const listTodos = todos.map((todo) => todo.id === id ? { ...todo, checked: !todo.checked } : todo);
+    setTodos(listTodos);
+    localStorage.setItem('todolist', JSON.stringify(listTodos));
 }
 
 const handleDelete = (id) => {
-    const listItems = items.filter((item) => item.id !== id);
-    setItems(listItems);
-    localStorage.setItem('shoppinglist', JSON.stringify(listItems));
+    const listTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(listTodos);
+    localStorage.setTodos('todolist', JSON.stringify(listTodos));
 }
 
     // const [name, setName] = useState();
@@ -69,21 +69,21 @@ const handleDelete = (id) => {
     
   return (
     <main>
-        {items.length ? (
+        {todos.length ? (
                 <ul>
-                    {items.map((item) => (
-                        <li className="item" key={item.id}>
+                    {todos.map((todo) => (
+                        <li className="item" key={todo.id}>
                             <input
                                 type="checkbox"
-                                onChange={() => handleCheck(item.id)}
-                                checked={item.checked}
+                                onChange={() => handleCheck(todo.id)}
+                                checked={todo.checked}
                             />
                             <label
-                                style={(item.checked) ? { textDecoration: 'line-through' } : null}
-                                onDoubleClick={() => handleCheck(item.id)}
-                            >{item.item}</label>
+                                style={(todo.checked) ? { textDecoration: 'line-through' } : null}
+                                onDoubleClick={() => handleCheck(todo.id)}
+                            >{todo.todo}</label>
                             <FaTrashAlt
-                                onClick={() => handleDelete(item.id)}
+                                onClick={() => handleDelete(todo.id)}
                                 role="button"
                                 tabIndex="0"
                             />
