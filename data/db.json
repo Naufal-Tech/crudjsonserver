@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "checked": false,
+      "todo": "Belajar MVC"
+    },
+    {
+      "id": 2,
+      "checked": false,
+      "todo": "Belajar NodeJS"
+    },
+    {
+      "id": 3,
+      "checked": false,
+      "todo": "Belajar PSQL"
+    },
+    {
+      "id": 4,
+      "checked": false,
+      "todo": "Belajar React"
+    }
+  ]
+}

@@ -1,39 +1,12 @@
 import React from 'react'
-import { useState } from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
+import TodoList from './TodoList'
 
-export default function Content() {
 
-    const [todos, setTodos] = useState([
 
-    {
-        id: 1,
-        checked: false,
-        todo: "Belajar ReactJs"
-    },
-    {
-        id: 2,
-        checked: false,
-        todo: "Belajar Rest-API"
-    },
-    {
-        id: 3,
-        checked: false,
-        todo: "Belajar MVC"
-    }
-]);
+export default function Content({ todos, handleCheck, handleDelete}) {
 
-const handleCheck = (id) => {
-    const listTodos = todos.map((todo) => todo.id === id ? { ...todo, checked: !todo.checked } : todo);
-    setTodos(listTodos);
-    localStorage.setItem('todolist', JSON.stringify(listTodos));
-}
+   
 
-const handleDelete = (id) => {
-    const listTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(listTodos);
-    localStorage.setTodos('todolist', JSON.stringify(listTodos));
-}
 
     // const [name, setName] = useState();
     // const [count, setCount] = useState(0);
@@ -68,31 +41,16 @@ const handleDelete = (id) => {
     //   }
     
   return (
-    <main>
+    <>
         {todos.length ? (
-                <ul>
-                    {todos.map((todo) => (
-                        <li className="item" key={todo.id}>
-                            <input
-                                type="checkbox"
-                                onChange={() => handleCheck(todo.id)}
-                                checked={todo.checked}
-                            />
-                            <label
-                                style={(todo.checked) ? { textDecoration: 'line-through' } : null}
-                                onDoubleClick={() => handleCheck(todo.id)}
-                            >{todo.todo}</label>
-                            <FaTrashAlt
-                                onClick={() => handleDelete(todo.id)}
-                                role="button"
-                                tabIndex="0"
-                            />
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p style={{ marginTop: '2rem' }}>Your list is empty.</p>
-            )}
+        <TodoList 
+            todos={todos}
+            handleCheck={handleCheck}
+            handleDelete={handleDelete}
+        />
+        ) : (
+            <p style={{ marginTop: '2rem' }}>There is no todolist.</p>
+        )}
         {/* <p onDoubleClick={handleClick}> */}
           {/* Hello {handleNameChange()}! */}
           {/* Hello {name}!
@@ -102,6 +60,6 @@ const handleDelete = (id) => {
         <button onClick={handleClick0}>Handle Recount</button>
         <button onClick={() => handleClick2('Dave')}>Click Please?</button>
         <button onClick={(e) => handleClick3(e)}>Click Please?</button> */}
-    </main>
+    </>
   )
 }

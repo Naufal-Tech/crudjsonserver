@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Header() {
+export default function Header({title}) {
 
 // const headerStyle = {
 //     backgroundColor: 'royalblue',
@@ -12,7 +12,13 @@ export default function Header() {
         // backgroundColor: 'mediumblue',
         // color: '#ffff'
     >
-        <h1>TODO-LIST</h1>
+        <h1>{title}</h1>
     </header>
   )
+
+
+}
+
+Header.defaultProps = {
+  title: "Default title"
 }
